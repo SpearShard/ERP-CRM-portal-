@@ -2,9 +2,9 @@ import { Router } from "express";
 import {
   createFollowUp,
   getCustomerFollowUps,
-} from "../controllers/followup.controller";
-import { authenticate } from "../middleware/auth.middleware";
-import { authorize } from "../middleware/role.middleware";
+} from "../controllers/followup.controller.js";
+import { authenticate } from "../middleware/auth.middleware.js";
+import { authorize } from "../middleware/role.middleware.js";
 
 
 const router = Router();

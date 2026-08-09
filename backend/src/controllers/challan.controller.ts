@@ -1,6 +1,6 @@
 import { Response } from "express";
 import prisma from "../config/database";
-import { AuthRequest } from "../middleware/auth.middleware";
+import { AuthRequest } from "../middleware/auth.middleware.js";
 
 export async function createChallan(
   req: AuthRequest,

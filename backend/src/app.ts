@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
-import authRoutes from "./routes/auth.routes";
-import customerRoutes from "./routes/customer.routes"
-import followUpRoutes from "./routes/followup.routes";
-import productRoutes from "./routes/product.routes";
-import stockRoutes from "./routes/stock.routes";
-import challanRoutes from "./routes/challan.routes";
-import dashboardRoutes from "./routes/dashboard.routes";
+import authRoutes from "./routes/auth.routes.js";
+import customerRoutes from "./routes/customer.routes.js"
+import followUpRoutes from "./routes/followup.routes.js";
+import productRoutes from "./routes/product.routes.js";
+import stockRoutes from "./routes/stock.routes.js";
+import challanRoutes from "./routes/challan.routes.js";
+import dashboardRoutes from "./routes/dashboard.routes.js";
 
 const app = express();
 

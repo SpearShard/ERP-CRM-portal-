@@ -5,9 +5,9 @@ import {
   getCustomerById,
   updateCustomer,
   deactivateCustomer,
-} from "../controllers/customer.controller";
-import { authenticate } from "../middleware/auth.middleware";
-import { authorize } from "../middleware/role.middleware";
+} from "../controllers/customer.controller.js";
+import { authenticate } from "../middleware/auth.middleware.js";
+import { authorize } from "../middleware/role.middleware.js";
 
 const router = Router();
 
