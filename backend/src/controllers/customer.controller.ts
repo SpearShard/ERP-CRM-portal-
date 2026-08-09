@@ -100,7 +100,7 @@ export async function getCustomerById(
   res: Response
 ) {
   try {
-    const { id } = req.params;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
 
     const customer = await prisma.customer.findUnique({
       where: {
@@ -136,7 +136,7 @@ export async function updateCustomer(
   res: Response
 ) {
   try {
-    const { id } = req.params;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
 
     const {
       name,
@@ -206,7 +206,7 @@ export async function deactivateCustomer(
   res: Response
 ) {
   try {
-    const { id } = req.params;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
 
     const existingCustomer = await prisma.customer.findUnique({
       where: {

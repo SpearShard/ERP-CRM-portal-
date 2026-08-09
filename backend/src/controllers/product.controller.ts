@@ -161,7 +161,7 @@ export async function getProductById(
   res: Response
 ) {
   try {
-    const { id } = req.params;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
 
     const product = await prisma.product.findUnique({
       where: {
@@ -197,7 +197,7 @@ export async function updateProduct(
   res: Response
 ) {
   try {
-    const { id } = req.params;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
 
     const {
       name,
