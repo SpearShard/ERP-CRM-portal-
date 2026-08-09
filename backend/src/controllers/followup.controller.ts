@@ -7,7 +7,9 @@ export async function createFollowUp(
   res: Response
 ) {
   try {
-    const { customerId } = req.params;
+    const customerId = Array.isArray(req.params.customerId)
+  ? req.params.customerId[0]
+  : req.params.customerId;
     const { note, followUpDate } = req.body;
 
     if (!note) {
@@ -70,7 +72,9 @@ export async function getCustomerFollowUps(
   res: Response
 ) {
   try {
-    const { customerId } = req.params;
+    const customerId = Array.isArray(req.params.customerId)
+  ? req.params.customerId[0]
+  : req.params.customerId;
 
     const customer = await prisma.customer.findUnique({
       where: {
