@@ -1,5 +1,5 @@
 import { Response } from "express";
-import prisma from "../config/database";
+import prisma from "../config/database.js";
 import { AuthRequest } from "../middleware/auth.middleware.js";
 
 export async function createFollowUp(

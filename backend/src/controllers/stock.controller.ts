@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
 import { AuthRequest } from "../middleware/auth.middleware.js";
-import prisma from "../config/database";
+import prisma from "../config/database.js";
 
+
+type TransactionClient = Parameters<
+  Parameters<typeof prisma.$transaction>[0]
+>[0];
 
 
 export async function createStockMovement(
@@ -51,7 +55,8 @@ export async function createStockMovement(
       });
     }
 
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(
+  async (tx: TransactionClient) => {
       const product = await tx.product.findUnique({
         where: {
           id: productId,

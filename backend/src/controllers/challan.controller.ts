@@ -1,6 +1,10 @@
 import { Response } from "express";
-import prisma from "../config/database";
+import prisma from "../config/database.js";
 import { AuthRequest } from "../middleware/auth.middleware.js";
+
+type TransactionClient = Parameters<
+  Parameters<typeof prisma.$transaction>[0]
+>[0];
 
 export async function createChallan(
   req: AuthRequest,
@@ -107,8 +111,8 @@ export async function createChallan(
               quantity: number;
             }) => {
               const product = products.find(
-                (p) => p.id === item.productId
-              )!;
+  (p: typeof products[number]) => p.id === item.productId
+)!;
 
               return {
                 productId: product.id,
@@ -169,7 +173,8 @@ export async function confirmChallan(
       });
     }
 
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(
+  async (tx: TransactionClient) => {
       const challan = await tx.challan.findUnique({
         where: {
           id: challanId,

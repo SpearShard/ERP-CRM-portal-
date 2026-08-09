@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "../generated/prisma/client";
+import { PrismaClient } from "../generated/prisma/client.js";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({
@@ -27,9 +27,11 @@ export async function getDashboardStats(
       ]);
 
     const lowStock = productStock.filter(
-      (product) =>
-        product.currentStock <= product.minimumStock
-    ).length;
+  (product: {
+    currentStock: number;
+    minimumStock: number;
+  }) => product.currentStock <= product.minimumStock
+).length;
 
     return res.json({
       success: true,
